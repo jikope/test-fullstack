@@ -24,10 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
-// Route::resource('posts', PostController::class)->only([
-//     'index', 'show', 'store', 'update', 'destroy'
-// ])->middleware('auth:sanctum');
-
 Route::prefix('posts')->middleware('auth:sanctum')->group(function() {
     Route::get('{post}', [PostController::class, 'show']);
     Route::post('', [PostController::class, 'store'])->middleware('ability:create-post');
@@ -41,7 +37,3 @@ Route::prefix('posts')->middleware('auth:sanctum')->group(function() {
         Route::delete('{comment}', [CommentController::class, 'destroy'])->middleware('ability:delete-comment');
     });
 });
-
-// Route::resource('posts.comments', CommentController::class)->only([
-//     'index', 'show', 'store', 'update', 'destroy'
-// ])->middleware('auth:sanctum');

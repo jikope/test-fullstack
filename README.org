@@ -1,4 +1,10 @@
+* Install Dependencies
+#+begin_src sh
+composer install
+#+end_src
+
 * Test
+Test file : =tests/Feature/ExampleTest.php=
 
 #+begin_src sh
 vendor/bin/phpunit 
